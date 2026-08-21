@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  /* Палітра персонального бренду */
+  --color-sand: #D8C3A5;
+  --color-ivory: #F5F0E8;
+  --color-espresso: #4A3428;
+  --color-sage: #7A8B72;
+  --color-dark-olive: #3F4A3A;
+
+  /* Шрифтові змінні, пов'язані з next/font */
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-espresso);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #D8C3A5;
+    color: #4A3428;
+  }
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Фон: благородний темний еспресо з м'яким скругленням -->
+  <rect width="32" height="32" rx="7" fill="#262220" />
+  
+  <!-- Тонка елегантна внутрішня рамка -->
+  <rect x="1" y="1" width="30" height="30" rx="6" fill="none" stroke="#FAF7F2" stroke-opacity="0.12" stroke-width="1" />
+  
+  <!-- Монограма HT: вишуканий класичний стиль із засічками -->
+  <text
+    x="15"
+    y="22"
+    font-family="'Cormorant Garamond', 'Georgia', 'Times New Roman', serif"
+    font-size="16"
+    font-weight="600"
+    letter-spacing="0.5"
+    fill="#FAF7F2"
+    text-anchor="middle"
+  >HT</text>
+
+  <!-- Фірмовий брендовий акцент: витончена крапка кольору шавлії (Sage) -->
+  <circle cx="24.5" cy="21.5" r="1.5" fill="#8A9A86" />
+</svg>
