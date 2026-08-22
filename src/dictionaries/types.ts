@@ -1,133 +1,90 @@
-export const LOCALES = ["uk", "en"] as const;
-export type Locale = (typeof LOCALES)[number];
-export const DEFAULT_LOCALE: Locale = "uk";
-
-export function isLocale(value: unknown): value is Locale {
-  return typeof value === "string" && (LOCALES as readonly string[]).includes(value);
-}
-
-export interface NavSection {
-  about: string;
-  expertise: string;
-  services: string;
-  experience: string;
-  contact: string;
-  cta: string;
-}
-
-export interface HeroDisciplines {
-  first: string;
-  second: string;
-  third: string;
-  tagline: string;
-}
-
-export interface HeroSection {
-  badge: string;
-  name: string;
-  role: string;
-  description: string;
-  ctaPrimary: string;
-  ctaSecondary: string;
-  disciplines: HeroDisciplines;
-}
-
-export interface PillarItem {
-  role: string;
-  title: string;
-  description: string;
-}
-
-export interface AboutSection {
-  tag: string;
-  title: string;
-  lead: string;
-  pillars: {
-    academic: PillarItem;
-    english: PillarItem;
-    brand: PillarItem;
-  };
-}
-
-export interface ExpertiseCategory {
-  title: string;
-  skills: string[];
-}
-
-export interface ExpertiseSection {
-  tag: string;
-  title: string;
-  categories: {
-    philology: ExpertiseCategory;
-    english: ExpertiseCategory;
-    brand: ExpertiseCategory;
-    professional: ExpertiseCategory;
-  };
-}
-
-export interface ServiceItem {
-  number: string;
-  title: string;
-  subtitle: string;
-  description: string;
-}
-
-export interface ServicesSection {
-  tag: string;
-  title: string;
-  cta: string;
-  items: ServiceItem[];
-}
-
-export interface ExperienceItem {
-  id: string;
-  period: string;
-  role: string;
-  organization: string;
-  description: string;
-  highlights: string[];
-}
-
-export interface ExperienceSection {
-  tag: string;
-  title: string;
-  subtitle: string;
-  items: ExperienceItem[];
-}
-
-export interface ContactSection {
-  tag: string;
-  title: string;
-  subtitle: string;
-  directContactLabel: string;
-  formTitle: string;
-  nameLabel: string;
-  namePlaceholder: string;
-  emailLabel: string;
-  emailPlaceholder: string;
-  serviceLabel: string;
-  servicePlaceholder: string;
-  messageLabel: string;
-  messagePlaceholder: string;
-  submitButton: string;
-  submittingButton: string;
-  successMessage: string;
-  errorMessage: string;
-}
-
-export interface FooterSection {
-  rights: string;
-  brandTagline: string;
-  backToTop: string;
-}
-
 export interface Dictionary {
-  nav: NavSection;
-  hero: HeroSection;
-  about: AboutSection;
-  expertise: ExpertiseSection;
-  services: ServicesSection;
-  experience: ExperienceSection;
-  contact: ContactSection;
-  footer: FooterSection;
+  nav: {
+    home: string;
+    about: string;
+    expertise: string;
+    services: string;
+    research: string;
+    contact: string;
+    talkCta: string;
+  };
+  hero: {
+    tag: string;
+    name: string;
+    titles: string[];
+    concept: {
+      language: string;
+      research: string;
+      brand: string;
+    };
+    description: string;
+    ctaExpertise: string;
+    ctaContact: string;
+    badge: string;
+  };
+  credibilityStrip: string;
+  about: {
+    label: string;
+    heading: string;
+    text1: string;
+    text2: string;
+    manifesto: {
+      line1: string;
+      line2: string;
+      line3: string;
+    };
+  };
+  expertise: {
+    label: string;
+    heading: string;
+    items: {
+      number: string;
+      title: string;
+      skills: string[];
+    }[];
+  };
+  services: {
+    label: string;
+    heading: string;
+    cta: string;
+    items: {
+      badge: string;
+      title: string;
+      description: string;
+    }[];
+  };
+  quote: {
+    text: string;
+    author: string;
+    role: string;
+  };
+  contact: {
+    label: string;
+    heading: string;
+    description: string;
+    btnEmail: string;
+    email: string;
+    socials: {
+      linkedin: { label: string; url: string };
+      instagram: { label: string; url: string };
+      facebook: { label: string; url: string };
+    };
+    form: {
+      title: string;
+      description: string;
+      nameLabel: string;
+      namePlaceholder: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      messageLabel: string;
+      messagePlaceholder: string;
+      submitBtn: string;
+      submittingBtn: string;
+      successMsg: string;
+      errorMsg: string;
+    };
+    footerTag: string;
+    copyright: string;
+    backToTop: string;
+  };
 }

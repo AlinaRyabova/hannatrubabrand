@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Палітра персонального бренду */
-  --color-sand: #D8C3A5;
-  --color-ivory: #F5F0E8;
-  --color-espresso: #4A3428;
-  --color-sage: #7A8B72;
-  --color-dark-olive: #3F4A3A;
+  --color-warm-ivory: #F5EFE3;
+  --color-soft-cream: #E9DDCA;
+  --color-rich-sand: #D4B58A;
+  --color-sand-accent: #C29F6E;
 
-  /* Шрифтові змінні, пов'язані з next/font */
+  --color-coffee: #5A3828;
+  --color-espresso: #2F211A;
+
+  --color-rich-sage: #657A55;
+  --color-deep-forest: #304832;
+
   --font-serif: var(--font-cormorant), Georgia, serif;
   --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
 }
@@ -24,18 +27,25 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-warm-ivory);
+    color: var(--color-espresso);
   }
 
   body {
-    background-color: var(--color-ivory);
+    background-color: var(--color-warm-ivory);
     color: var(--color-espresso);
     font-family: var(--font-sans);
     min-height: 100vh;
     overflow-x: hidden;
   }
 
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
   ::selection {
-    background-color: #D8C3A5;
-    color: #4A3428;
+    background-color: var(--color-rich-sand);
+    color: var(--color-espresso);
   }
 }

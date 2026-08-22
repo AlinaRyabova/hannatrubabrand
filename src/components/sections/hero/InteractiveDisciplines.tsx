@@ -4,60 +4,58 @@ import { useState, useEffect } from "react";
 import { Dictionary } from "@/dictionaries";
 
 interface InteractiveDisciplinesProps {
-  disciplines: Dictionary["hero"]["disciplines"];
+  concept: Dictionary["hero"]["concept"];
 }
 
 export function InteractiveDisciplines({
-  disciplines,
+  concept,
 }: InteractiveDisciplinesProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const items = [
-    disciplines.first, // LANGUAGE.
-    disciplines.second, // RESEARCH.
-    disciplines.third, // BRAND.
+    concept.language,
+    concept.research,
+    concept.brand,
   ];
 
-  // Автоматична циклічна зміна акценту кожні 2.5 секунди
   useEffect(() => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % items.length);
-    }, 2500);
+    }, 2800);
 
     return () => clearInterval(interval);
   }, [isPaused, items.length]);
 
   return (
     <div
-      className="mt-8 flex flex-col items-start border-l-2 border-sage/40 pl-4 transition-all duration-300 sm:mt-10"
+      className="mt-8 flex items-center gap-3 sm:mt-10 sm:gap-4"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-serif text-lg font-semibold tracking-wider sm:text-2xl">
-        {items.map((word, index) => {
-          const isActive = activeIndex === index;
-          return (
+      {items.map((word, index) => {
+        const isActive = activeIndex === index;
+        return (
+          <div key={word} className="flex items-center gap-3 sm:gap-4">
             <button
-              key={word}
               type="button"
               onClick={() => setActiveIndex(index)}
-              className={`cursor-pointer transition-all duration-300 focus:outline-hidden ${
+              className={`cursor-pointer font-sans text-xs font-bold tracking-[0.18em] uppercase transition-all duration-300 sm:text-sm focus:outline-hidden ${
                 isActive
-                  ? "scale-105 text-espresso drop-shadow-xs"
-                  : "text-espresso/35 hover:text-espresso/70"
+                  ? "scale-105 text-[#304832] underline underline-offset-4 decoration-[#D4B58A]"
+                  : "text-[#5A3828]/40 hover:text-[#5A3828]"
               }`}
             >
               {word}
             </button>
-          );
-        })}
-      </div>
-      <p className="mt-1.5 font-sans text-xs font-medium tracking-widest uppercase text-sage sm:text-sm">
-        {disciplines.tagline}
-      </p>
+            {index < items.length - 1 && (
+              <span className="h-1 w-1 rounded-full bg-[#D4B58A]" />
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

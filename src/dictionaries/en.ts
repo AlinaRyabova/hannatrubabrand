@@ -2,193 +2,155 @@ import { Dictionary } from "./types";
 
 export const en: Dictionary = {
   nav: {
+    home: "Home",
     about: "About",
     expertise: "Expertise",
     services: "Services",
-    experience: "Experience",
+    research: "Research",
     contact: "Contact",
-    cta: "Start a Project",
+    talkCta: "Let's talk",
   },
   hero: {
-    badge: "Personal Brand & Academic Expertise",
-    name: "Hanna Truba",
-    role: "Doctor of Philology · English Educator · Brand Strategist",
-    description:
-      "Bridging academic rigor, language mastery, and strategic brand positioning to help professionals and projects communicate with authority.",
-    ctaPrimary: "My Expertise",
-    ctaSecondary: "Get in Touch",
-    disciplines: {
-      first: "LANGUAGE.",
-      second: "RESEARCH.",
-      third: "BRAND.",
-      tagline: "Three dimensions — one distinct professional voice",
+    tag: "Personal Brand",
+    name: "HANNA TRUBA",
+    titles: [
+      "Doctor of Philology",
+      "English Language Educator",
+      "Brand Manager",
+    ],
+    concept: {
+      language: "LANGUAGE",
+      research: "RESEARCH",
+      brand: "BRAND",
     },
+    description:
+      "Uniting rigorous philological inquiry, modern language pedagogy, and strategic brand positioning to craft clear, authoritative communication.",
+    ctaExpertise: "Explore my expertise",
+    ctaContact: "Get in touch",
+    badge: "Doctor of Philology",
   },
+  credibilityStrip:
+    "Doctor of Philology · Academic Researcher · English Educator · Brand Manager",
   about: {
-    tag: "Professional Profile",
-    title: "Academic Depth Meets Modern Practice",
-    lead:
-      "My career connects deep linguistic expertise with strategic positioning, using language as the foundation for clear thinking and lasting reputation.",
-    pillars: {
-      academic: {
-        role: "Researcher",
-        title: "Academic Philology",
-        description:
-          "Doctoral degree, monographs, discourse analysis, and text structures. A rigorous analytical framework for complex meanings.",
-      },
-      english: {
-        role: "Educator",
-        title: "English Mastery",
-        description:
-          "Language education for researchers, executives, and organizations. Overcoming communication barriers and preparing for global stages.",
-      },
-      brand: {
-        role: "Strategist",
-        title: "Brand & Messaging",
-        description:
-          "Crafting strong personal brands, distinctive Tone of Voice, and clear positioning frameworks for executive growth.",
-      },
+    label: "Philosophy",
+    heading: "Three disciplines.\nOne professional vision.",
+    text1:
+      "Philology, English teaching, and Brand Management are not separate career tracks — they are interconnected dimensions of how ideas are formulated, delivered, and remembered.",
+    text2:
+      "From deep academic discourse to strategic positioning, I help individuals and organizations unlock the real power of language, clarity, resonance, and cultural authority.",
+    manifesto: {
+      line1: "Words create meaning.",
+      line2: "Meaning creates connection.",
+      line3: "Connection creates identity.",
     },
   },
   expertise: {
-    tag: "Core Focus",
-    title: "Key Areas of Expertise",
-    categories: {
-      philology: {
-        title: "Philology & Research",
-        skills: [
-          "Discourse Analysis",
-          "Academic Advisory",
-          "Monograph Editing",
-          "Scientific Paper Auditing",
-          "Textual Semantics",
-        ],
-      },
-      english: {
-        title: "English Education",
-        skills: [
-          "Academic English (EAP)",
-          "Business Communication",
-          "Executive 1-on-1 Coaching",
-          "Publication Readiness",
-          "Fluency & Confidence",
-        ],
-      },
-      brand: {
-        title: "Branding & Strategy",
-        skills: [
-          "Tone of Voice Design",
-          "Brand Platform",
-          "Executive Positioning",
-          "Messaging Architecture",
-          "Content Strategy",
-        ],
-      },
-      professional: {
-        title: "Professional Standards",
-        skills: [
-          "International Experience",
-          "Academic Integrity",
-          "Tailored Approach",
-          "Results-Driven Focus",
-          "Long-Term Mentorship",
-        ],
-      },
-    },
-  },
-  services: {
-    tag: "Collaboration",
-    title: "Services & Formats",
-    cta: "Request Consultation",
+    label: "Areas of Focus",
+    heading: "Comprehensive Expertise",
     items: [
       {
         number: "01",
-        title: "Language Mentorship",
-        subtitle: "1-on-1 English Training Programs",
-        description:
-          "Tailored programs for researchers, executives, and professionals preparing for international keynotes, papers, and high-stakes communication.",
+        title: "Philology & Research",
+        skills: [
+          "Philological research",
+          "Linguistics",
+          "Academic writing",
+          "Text analysis",
+          "Research methodology",
+        ],
       },
       {
         number: "02",
-        title: "Personal Brand Strategy",
-        subtitle: "Positioning & Tone of Voice",
-        description:
-          "Comprehensive development of expert authority: from value propositions to messaging matrices and actionable visibility roadmaps.",
+        title: "English Language",
+        skills: [
+          "English language teaching",
+          "Academic English",
+          "Business English",
+          "Communication skills",
+          "Individual learning strategies",
+        ],
       },
       {
         number: "03",
-        title: "Academic Advisory & Editing",
-        subtitle: "Text Refinement & Review",
-        description:
-          "Peer review, structural editing, and refinement of scientific papers, monographs, and presentations for international journals.",
+        title: "Brand Management",
+        skills: [
+          "Brand strategy",
+          "Positioning",
+          "Communication strategy",
+          "Content & messaging",
+          "Audience analysis",
+        ],
       },
     ],
   },
-  experience: {
-    tag: "Career Path",
-    title: "Experience & Key Milestones",
-    subtitle: "Timeline of academic research, language education, and brand consulting",
+  services: {
+    label: "Solutions",
+    heading: "How I Can Help You",
+    cta: "Learn more",
     items: [
       {
-        id: "exp-1",
-        period: "2020 — Present",
-        role: "Brand Strategist & Communications Advisor",
-        organization: "Consulting Practice",
+        badge: "Language Mastery",
+        title: "English Language",
         description:
-          "Developing strategic messaging platforms, tone of voice guidelines, and content roadmaps for executives and educational initiatives.",
-        highlights: [
-          "Over 20 completed brand communication strategies",
-          "Creation of comprehensive long-term brand platforms",
-        ],
+          "English lessons & language consulting. For professionals, academics, and individuals aiming to communicate fluently and authoritatively.",
       },
       {
-        id: "exp-2",
-        period: "2015 — Present",
-        role: "English Educator & Academic Mentor",
-        organization: "University & Private Practice",
+        badge: "Academic Guidance",
+        title: "Academic & Language Consulting",
         description:
-          "Preparing specialists for international conferences, scientific publishing, and professional communication in English.",
-        highlights: [
-          "Proprietary accelerated language immersion methodology",
-          "Hundreds of successful alumni and mentees",
-        ],
+          "Research methodology, academic publication support, text analysis, and professional linguistic review.",
       },
       {
-        id: "exp-3",
-        period: "2012 — 2021",
-        role: "Doctor of Philology · Researcher",
-        organization: "Leading Research Institutions",
+        badge: "Strategic Identity",
+        title: "Brand Management",
         description:
-          "Doctoral defense, monograph authoring, and continuous publications in peer-reviewed international scientific journals.",
-        highlights: [
-          "Doctor of Philological Sciences degree",
-          "Dozens of academic publications and conference keynotes",
-        ],
+          "Brand positioning, communication architecture, narrative development, and meaningful identity creation for experts and brands.",
       },
     ],
   },
-  contact: {
-    tag: "Get in Touch",
-    title: "Let’s Start a Conversation",
-    subtitle: "Fill out the form or reach out directly to discuss your goals and collaboration formats",
-    directContactLabel: "Direct Channels",
-    formTitle: "Send a Message",
-    nameLabel: "Your Name",
-    namePlaceholder: "Jane Doe",
-    emailLabel: "Email Address",
-    emailPlaceholder: "example@domain.com",
-    serviceLabel: "Area of Interest",
-    servicePlaceholder: "Select a service or consultation topic",
-    messageLabel: "Project Brief",
-    messagePlaceholder: "Describe your goals, timeline, or questions...",
-    submitButton: "Send Inquiry",
-    submittingButton: "Sending...",
-    successMessage: "Thank you! Your message has been received. I will get back to you shortly.",
-    errorMessage: "An error occurred while sending. Please try again or reach out directly.",
+  quote: {
+    text: "“Language is not only a tool of communication. It is a way of thinking, connecting and creating meaning.”",
+    author: "Hanna Truba",
+    role: "Doctor of Philology",
   },
-  footer: {
-    rights: "All rights reserved.",
-    brandTagline: "Hanna Truba — Doctor of Philology · English Educator · Brand Strategist",
-    backToTop: "Back to Top",
+  contact: {
+    label: "Get in Touch",
+    heading: "Let's create something meaningful.",
+    description:
+      "Whether you are looking for English language expertise, academic collaboration, or brand strategy — let’s talk.",
+    btnEmail: "Email Me",
+    email: "3182009060@ukr.net",
+    socials: {
+      linkedin: {
+        label: "LinkedIn",
+        url: "https://www.linkedin.com/in/hanna-truba-032964227",
+      },
+      instagram: {
+        label: "Instagram",
+        url: "https://instagram.com/dr_hanna_english_tutor",
+      },
+      facebook: {
+        label: "Facebook",
+        url: "https://facebook.com/anna.truba.997554",
+      },
+    },
+    form: {
+      title: "Direct Inquiry",
+      description:
+        "Available for private English coaching, academic review panels, guest lectures, and brand-manage.",
+      nameLabel: "Name",
+      namePlaceholder: "Your name",
+      emailLabel: "Email",
+      emailPlaceholder: "your.email@example.com",
+      messageLabel: "Message",
+      messagePlaceholder: "Tell me about your project or inquiry...",
+      submitBtn: "Send Message",
+      submittingBtn: "Sending...",
+      successMsg: "Message sent successfully. Thank you for reaching out!",
+      errorMsg: "An error occurred while sending. Please try again.",
+    },
+    footerTag: "Doctor of Philology · English Educator · Brand Manager",
+    copyright: "© 2026 Hanna Truba. All rights reserved.",
+    backToTop: "Top",
   },
 };

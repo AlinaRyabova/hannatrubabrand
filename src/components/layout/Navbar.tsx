@@ -13,50 +13,46 @@ export function Navbar({ dict, locale }: NavbarProps) {
     { href: `#about`, label: dict.about },
     { href: `#expertise`, label: dict.expertise },
     { href: `#services`, label: dict.services },
-   { href: "#experience", label: dict.experience },
     { href: `#contact`, label: dict.contact },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-espresso/10 bg-ivory/85 backdrop-blur-md transition-colors">
+    <header className="sticky top-0 z-50 w-full border-b border-[#5A3828]/10 bg-[#F5EFE3]/90 backdrop-blur-md transition-colors">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-        {/* Логотип / Ім'я бренду */}
         <Link
           href={`/${locale}`}
-          className="group flex flex-col font-serif text-xl tracking-tight text-espresso transition-opacity hover:opacity-85 sm:text-2xl"
+          className="group flex flex-col font-serif text-xl tracking-tight text-[#2F211A] transition-opacity hover:opacity-85 sm:text-2xl"
         >
-          <span className="font-semibold leading-none">Hanna Truba</span>
-          <span className="font-sans text-[10px] font-medium tracking-widest uppercase text-espresso/60">
+          <span className="font-bold leading-none">HANNA TRUBA</span>
+          <span className="font-sans text-[10px] font-medium tracking-widest uppercase text-[#5A3828]/70">
             Doctor of Philology
           </span>
         </Link>
 
-        {/* Десктопна навігація */}
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="relative text-sm font-medium tracking-wide text-espresso/80 transition-colors hover:text-espresso"
+              className="relative text-sm font-medium tracking-wide text-[#2F211A]/80 transition-colors hover:text-[#5A3828]"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Десктопний правий блок (Перемикач мов + CTA кнопка) */}
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           <LanguageSwitcher currentLocale={locale} />
           
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-espresso px-5 py-2.5 text-xs font-medium tracking-wider text-ivory transition-all duration-200 hover:bg-dark-olive hover:shadow-sm active:scale-98"
+            className="inline-flex items-center gap-1.5 border-b border-[#304832] pb-0.5 font-sans text-xs font-semibold tracking-wider uppercase text-[#304832] transition-colors hover:border-[#657A55] hover:text-[#657A55]"
           >
-            {dict.cta}
+            <span>{dict.talkCta}</span>
+            <span>→</span>
           </Link>
         </div>
 
-        {/* Мобільна навігація */}
         <MobileNav dict={dict} locale={locale} />
       </div>
     </header>

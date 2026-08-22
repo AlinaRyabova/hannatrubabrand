@@ -4,7 +4,7 @@ import { Hero } from "@/components/sections/hero/Hero";
 import { About } from "@/components/sections/about/About";
 import { Expertise } from "@/components/sections/expertise/Expertise";
 import { Services } from "@/components/sections/services/Services";
-import { Experience } from "@/components/sections/experience/Experience";
+import { Quote } from "@/components/sections/quote/Quote";
 import { Contact } from "@/components/sections/contact/Contact";
 import { Footer } from "@/components/layout/Footer";
 import { notFound } from "next/navigation";
@@ -24,36 +24,36 @@ export default async function HomePage({ params }: HomePageProps) {
     notFound();
   }
 
-  // Завдяки isLocale, TypeScript точно знає, що locale має тип Locale
   const dict = await getDictionary(locale);
 
   return (
-    <div id="top" className="min-h-screen bg-ivory text-espresso">
-      {/* Навігація */}
+    <div id="top" className="min-h-screen bg-[#F5EFE3] text-[#2F211A]">
       <Navbar dict={dict.nav} locale={locale} />
 
       <main>
-        {/* 1. Hero Section */}
         <Hero dict={dict.hero} />
 
-        {/* 2. About / Professional Story */}
+        <div className="border-y border-[#5A3828]/15 bg-[#E9DDCA] py-4 text-center">
+          <div className="mx-auto max-w-7xl px-6">
+            <p className="font-sans text-xs font-semibold tracking-widest uppercase text-[#5A3828] md:text-sm">
+              {dict.credibilityStrip}
+            </p>
+          </div>
+        </div>
+
         <About dict={dict.about} />
 
-        {/* 3. Areas of Expertise */}
         <Expertise dict={dict.expertise} />
 
-        {/* 4. Services / Formats */}
         <Services dict={dict.services} />
 
-        {/* 5. Experience / Milestones */}
-        <Experience dict={dict.experience} />
+        <Quote dict={dict.quote} />
 
-        {/* 6. Contact & Inquiry Form */}
+
         <Contact dict={dict.contact} />
       </main>
 
-      {/* 7. Footer */}
-      <Footer dict={dict.footer} />
+      <Footer dict={dict.contact} />
     </div>
   );
 }

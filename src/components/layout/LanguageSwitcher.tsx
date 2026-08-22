@@ -11,7 +11,6 @@ interface LanguageSwitcherProps {
 export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
   const pathname = usePathname();
 
-  // Функція для заміни поточної локалі в шляху на нову
   const redirectedPathName = (locale: Locale) => {
     if (!pathname) return `/${locale}`;
     const segments = pathname.split("/");
@@ -20,24 +19,23 @@ export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
   };
 
   return (
-    <div className="flex items-center gap-1.5 rounded-full border border-espresso/15 bg-sand/20 px-2 py-1 text-xs font-medium tracking-wider">
+    <div className="flex items-center gap-1 rounded-full border border-[#5A3828]/15 bg-[#E9DDCA] p-1 text-xs font-semibold">
       <Link
         href={redirectedPathName("uk")}
-        className={`rounded-full px-2 py-0.5 transition-all duration-200 ${
+        className={`rounded-full px-2.5 py-0.5 transition-all duration-200 ${
           currentLocale === "uk"
-            ? "bg-espresso text-ivory shadow-xs"
-            : "text-espresso/70 hover:text-espresso"
+            ? "bg-[#5A3828] text-[#F5EFE3] shadow-xs"
+            : "text-[#5A3828]/70 hover:text-[#5A3828]"
         }`}
       >
-        UK
+        UA
       </Link>
-      <span className="text-espresso/30">|</span>
       <Link
         href={redirectedPathName("en")}
-        className={`rounded-full px-2 py-0.5 transition-all duration-200 ${
+        className={`rounded-full px-2.5 py-0.5 transition-all duration-200 ${
           currentLocale === "en"
-            ? "bg-espresso text-ivory shadow-xs"
-            : "text-espresso/70 hover:text-espresso"
+            ? "bg-[#5A3828] text-[#F5EFE3] shadow-xs"
+            : "text-[#5A3828]/70 hover:text-[#5A3828]"
         }`}
       >
         EN

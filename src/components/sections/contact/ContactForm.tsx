@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import { Dictionary } from "@/dictionaries";
+import { sendEmail } from "@/app/actions/sendEmail";
 
 interface ContactFormProps {
-  dict: Dictionary["contact"];
+  formDict: Dictionary["contact"]["form"];
 }
 
-export function ContactForm({ dict }: ContactFormProps) {
+export function ContactForm({ formDict }: ContactFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: "",
     message: "",
   });
 
@@ -20,12 +20,12 @@ export function ContactForm({ dict }: ContactFormProps) {
     e.preventDefault();
     setStatus("submitting");
 
-    // Імітація обробки форми (підключення API/Server Action)
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await sendEmail(formData);
+
+    if (result.success) {
       setStatus("success");
-      setFormData({ name: "", email: "", service: "", message: "" });
-    } catch {
+      setFormData({ name: "", email: "", message: "" });
+    } else {
       setStatus("error");
     }
   };
@@ -33,89 +33,73 @@ export function ContactForm({ dict }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-5 rounded-2xl border border-espresso/15 bg-ivory p-8 shadow-sm md:p-10"
+      className="flex flex-col gap-5 border border-[#F5EFE3]/15 bg-[#F5EFE3]/5 p-8 backdrop-blur-sm md:p-10"
     >
-      <h3 className="font-serif text-2xl font-bold text-espresso">
-        {dict.formTitle}
+      <h3 className="font-serif text-2xl font-bold text-[#F5EFE3]">
+        {formDict.title}
       </h3>
+      <p className="font-sans text-xs text-[#E9DDCA]/80">
+        {formDict.description}
+      </p>
 
-      {/* Поле: Ім'я */}
       <div>
-        <label className="block font-sans text-xs font-semibold tracking-wider uppercase text-espresso/70">
-          {dict.nameLabel}
+        <label className="block font-sans text-xs font-semibold tracking-wider uppercase text-[#D4B58A]">
+          {formDict.nameLabel}
         </label>
         <input
           type="text"
           required
-          placeholder={dict.namePlaceholder}
+          placeholder={formDict.namePlaceholder}
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="mt-2 w-full rounded-lg border border-espresso/20 bg-transparent px-4 py-3 font-sans text-sm text-espresso outline-hidden transition-colors focus:border-espresso focus:ring-1 focus:ring-espresso"
+          className="mt-2 w-full border border-[#F5EFE3]/20 bg-transparent px-4 py-3 font-sans text-sm text-[#F5EFE3] outline-hidden placeholder:text-[#F5EFE3]/30 transition-colors focus:border-[#D4B58A]"
         />
       </div>
 
-      {/* Поле: Email */}
       <div>
-        <label className="block font-sans text-xs font-semibold tracking-wider uppercase text-espresso/70">
-          {dict.emailLabel}
+        <label className="block font-sans text-xs font-semibold tracking-wider uppercase text-[#D4B58A]">
+          {formDict.emailLabel}
         </label>
         <input
           type="email"
           required
-          placeholder={dict.emailPlaceholder}
+          placeholder={formDict.emailPlaceholder}
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="mt-2 w-full rounded-lg border border-espresso/20 bg-transparent px-4 py-3 font-sans text-sm text-espresso outline-hidden transition-colors focus:border-espresso focus:ring-1 focus:ring-espresso"
+          className="mt-2 w-full border border-[#F5EFE3]/20 bg-transparent px-4 py-3 font-sans text-sm text-[#F5EFE3] outline-hidden placeholder:text-[#F5EFE3]/30 transition-colors focus:border-[#D4B58A]"
         />
       </div>
 
-      {/* Поле: Напрямок співпраці */}
       <div>
-        <label className="block font-sans text-xs font-semibold tracking-wider uppercase text-espresso/70">
-          {dict.serviceLabel}
-        </label>
-        <input
-          type="text"
-          placeholder={dict.servicePlaceholder}
-          value={formData.service}
-          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-          className="mt-2 w-full rounded-lg border border-espresso/20 bg-transparent px-4 py-3 font-sans text-sm text-espresso outline-hidden transition-colors focus:border-espresso focus:ring-1 focus:ring-espresso"
-        />
-      </div>
-
-      {/* Поле: Повідомлення */}
-      <div>
-        <label className="block font-sans text-xs font-semibold tracking-wider uppercase text-espresso/70">
-          {dict.messageLabel}
+        <label className="block font-sans text-xs font-semibold tracking-wider uppercase text-[#D4B58A]">
+          {formDict.messageLabel}
         </label>
         <textarea
           required
           rows={4}
-          placeholder={dict.messagePlaceholder}
+          placeholder={formDict.messagePlaceholder}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="mt-2 w-full rounded-lg border border-espresso/20 bg-transparent px-4 py-3 font-sans text-sm text-espresso outline-hidden transition-colors focus:border-espresso focus:ring-1 focus:ring-espresso resize-none"
+          className="mt-2 w-full border border-[#F5EFE3]/20 bg-transparent px-4 py-3 font-sans text-sm text-[#F5EFE3] outline-hidden placeholder:text-[#F5EFE3]/30 transition-colors focus:border-[#D4B58A] resize-none"
         />
       </div>
 
-      {/* Кнопка відправки */}
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-2 inline-flex items-center justify-center rounded-full bg-espresso px-8 py-3.5 font-sans text-xs font-semibold tracking-wider uppercase text-ivory transition-all duration-200 hover:bg-dark-olive disabled:opacity-50 cursor-pointer"
+        className="mt-2 inline-flex items-center justify-center border border-[#D4B58A] bg-[#D4B58A] px-8 py-3.5 font-sans text-xs font-bold tracking-wider uppercase text-[#2F211A] transition-all hover:bg-white hover:border-white disabled:opacity-50 cursor-pointer"
       >
-        {status === "submitting" ? dict.submittingButton : dict.submitButton}
+        {status === "submitting" ? formDict.submittingBtn : formDict.submitBtn}
       </button>
 
-      {/* Статусні повідомлення */}
       {status === "success" && (
-        <p className="rounded-lg bg-sage/15 p-3 text-center font-sans text-xs font-medium text-dark-olive">
-          {dict.successMessage}
+        <p className="border border-[#657A55] bg-[#304832] p-3 text-center font-sans text-xs font-medium text-[#F5EFE3]">
+          {formDict.successMsg}
         </p>
       )}
       {status === "error" && (
-        <p className="rounded-lg bg-red-100 p-3 text-center font-sans text-xs font-medium text-red-800">
-          {dict.errorMessage}
+        <p className="border border-red-500/50 bg-red-950/40 p-3 text-center font-sans text-xs font-medium text-red-200">
+          {formDict.errorMsg}
         </p>
       )}
     </form>

@@ -14,7 +14,6 @@ interface MobileNavProps {
 export function MobileNav({ dict, locale }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Керування блокуванням скролу, подією Escape та ресайзом вікна
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -23,15 +22,11 @@ export function MobileNav({ dict, locale }: MobileNavProps) {
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsOpen(false);
-      }
+      if (e.key === "Escape") setIsOpen(false);
     };
 
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsOpen(false);
-      }
+      if (window.innerWidth >= 768) setIsOpen(false);
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -48,29 +43,24 @@ export function MobileNav({ dict, locale }: MobileNavProps) {
     { href: "#about", label: dict.about },
     { href: "#expertise", label: dict.expertise },
     { href: "#services", label: dict.services },
-    { href: "#experience", label: dict.experience },
     { href: "#contact", label: dict.contact },
   ];
 
   return (
     <div className="flex items-center gap-3 md:hidden">
-      {/* Перемикач мов у звичайній шапці */}
       <LanguageSwitcher currentLocale={locale} />
 
-      {/* Кнопка відкриття меню (Бургер) */}
       <button
         type="button"
         onClick={() => setIsOpen(true)}
         aria-label="Open navigation menu"
         aria-expanded={isOpen}
-        className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-espresso/15 bg-sand/10 text-espresso focus:outline-hidden cursor-pointer"
+        className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-[#5A3828]/20 bg-[#E9DDCA] text-[#5A3828] cursor-pointer"
       >
-        <span className="h-0.5 w-5 bg-espresso" />
-        <span className="h-0.5 w-5 bg-espresso" />
-        <span className="h-0.5 w-5 bg-espresso" />
+        <span className="h-0.5 w-5 bg-[#5A3828]" />
+        <span className="h-0.5 w-5 bg-[#5A3828]" />
       </button>
 
-      {/* Повноекранний портал, що монтується безпосередньо в document.body */}
       {isOpen &&
         typeof document !== "undefined" &&
         createPortal(
@@ -78,58 +68,52 @@ export function MobileNav({ dict, locale }: MobileNavProps) {
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation"
-            className="fixed inset-0 z-[100] flex flex-col justify-between bg-ivory p-6 md:hidden overflow-y-auto animate-in fade-in duration-200"
+            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#F5EFE3] p-6 md:hidden overflow-y-auto"
           >
-            {/* Верхній ряд мобільного оверлея */}
-            <div className="flex items-center justify-between border-b border-espresso/10 pb-4">
+            <div className="flex items-center justify-between border-b border-[#5A3828]/10 pb-4">
               <Link
                 href={`/${locale}`}
                 onClick={() => setIsOpen(false)}
-                className="flex flex-col font-serif text-xl tracking-tight text-espresso"
+                className="flex flex-col font-serif text-xl tracking-tight text-[#2F211A]"
               >
-                <span className="font-semibold leading-none">Hanna Truba</span>
-                <span className="font-sans text-[10px] font-medium tracking-widest uppercase text-espresso/60">
+                <span className="font-bold leading-none">HANNA TRUBA</span>
+                <span className="font-sans text-[10px] font-medium tracking-widest uppercase text-[#5A3828]/70">
                   Doctor of Philology
                 </span>
               </Link>
 
               <div className="flex items-center gap-3">
-                <LanguageSwitcher currentLocale={locale} />
-
-                {/* Кнопка закриття (✕) */}
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
                   aria-label="Close navigation menu"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-espresso/15 bg-sand/10 text-espresso focus:outline-hidden cursor-pointer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#5A3828]/20 bg-[#E9DDCA] text-[#5A3828] cursor-pointer text-lg font-semibold"
                 >
-                  <span className="text-xl leading-none">✕</span>
+                  ✕
                 </button>
               </div>
             </div>
 
-            {/* Список навігаційних посилань */}
             <nav className="my-auto flex flex-col gap-6 py-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="font-serif text-3xl font-medium tracking-wide text-espresso transition-colors hover:text-sage"
+                  className="font-serif text-3xl font-medium tracking-wide text-[#2F211A] transition-colors hover:text-[#657A55]"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
 
-            {/* Нижня кнопка CTA */}
-            <div className="border-t border-espresso/10 pt-6">
+            <div className="border-t border-[#5A3828]/10 pt-6">
               <Link
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="inline-flex w-full items-center justify-center rounded-full bg-espresso px-6 py-4 text-center font-sans text-sm font-semibold tracking-wider uppercase text-ivory transition-all hover:bg-dark-olive"
+                className="inline-flex w-full items-center justify-center bg-[#5A3828] px-6 py-4 text-center font-sans text-xs font-semibold tracking-widest uppercase text-[#F5EFE3] transition-all hover:bg-[#304832]"
               >
-                {dict.cta}
+                {dict.talkCta} →
               </Link>
             </div>
           </div>,
